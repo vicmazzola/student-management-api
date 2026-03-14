@@ -26,4 +26,9 @@ public class StudentController {
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
+
+    @GetMapping("/high-grades")
+    public List<Student> getStudentsWithGradesAboveEight() {
+        return studentService.getStudentsWithGradesAboveEight();
+    }
 }
