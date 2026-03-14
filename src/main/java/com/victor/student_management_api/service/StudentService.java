@@ -48,4 +48,30 @@ public class StudentService {
     public List<Student> getStudentsWithGradesAboveEight() {
         return studentRepository.findStudentsWithGradesAboveEight();
     }
+
+    public Student updateStudent(Long matricula, StudentCreateRequest request) {
+
+        Student student = studentRepository.findById(matricula)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        student.setName(request.name());
+        student.setGender(request.gender());
+        student.setBirthDate(request.birthDate());
+
+        student.getSubjects().clear();
+
+        if (request.subjects() != null) {
+            for (StudentSubjectRequest subjectRequest : request.subjects()) {
+                StudentSubject subject = new StudentSubject();
+                subject.setSubject(subjectRequest.subject());
+                subject.setGrade(subjectRequest.grade());
+                subject.setStudent(student);
+
+                student.getSubjects().add(subject);
+            }
+        }
+
+        return studentRepository.save(student);
+
+    }
 }

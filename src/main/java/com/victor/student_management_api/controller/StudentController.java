@@ -31,4 +31,9 @@ public class StudentController {
     public List<Student> getStudentsWithGradesAboveEight() {
         return studentService.getStudentsWithGradesAboveEight();
     }
+
+    @PutMapping("/{matricula}")
+    public Student updateStudent(@PathVariable Long matricula, @RequestBody StudentCreateRequest request) {
+        return studentService.updateStudent(matricula, request);
+    }
 }
