@@ -1,5 +1,6 @@
 package com.victor.student_management_api.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class Student {
     @Column(name = "nascimento", nullable = false)
     private LocalDate birthDate;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StudentSubject> subjects = new ArrayList<>();
 }

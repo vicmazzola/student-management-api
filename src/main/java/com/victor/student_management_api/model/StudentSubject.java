@@ -1,5 +1,6 @@
 package com.victor.student_management_api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class StudentSubject {
     @Column(name = "nota_final", nullable = false)
     private Integer grade;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matricula", nullable = false)
     private Student student;
