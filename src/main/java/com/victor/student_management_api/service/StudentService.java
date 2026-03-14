@@ -7,6 +7,8 @@ import com.victor.student_management_api.model.StudentSubject;
 import com.victor.student_management_api.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -37,5 +39,9 @@ public class StudentService {
         }
 
         return studentRepository.save(student);
+    }
+
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
 }
