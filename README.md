@@ -12,6 +12,7 @@ This project was developed using **Java, Spring Boot, JPA, and an H2 in-memory d
 - Spring Boot
 - Spring Web
 - Spring Data JPA
+- Spring Security (Basic Authentication)
 - H2 Database (in-memory)
 - Maven
 - Lombok
@@ -167,7 +168,17 @@ The API will start at:
 ```
 http://localhost:8080
 ```
+---
+# Authentication
 
+The API is protected using **Spring Security Basic Authentication**.
+
+All endpoints require authentication.
+
+Default credentials:
+
+username: admin  
+password: admin123
 ---
 
 # H2 Database Console
