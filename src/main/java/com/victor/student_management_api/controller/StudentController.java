@@ -4,6 +4,7 @@ import com.victor.student_management_api.dto.StudentCreateRequest;
 import com.victor.student_management_api.model.Student;
 import com.victor.student_management_api.service.StudentService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,25 +20,27 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student createStudent(@Valid @RequestBody StudentCreateRequest request) {
-        return studentService.createStudent(request);
+    public ResponseEntity<Student> createStudent(@Valid @RequestBody StudentCreateRequest request) {
+        Student student = studentService.createStudent(request);
+        return ResponseEntity.ok(student);
     }
 
     @GetMapping
-    public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+    public ResponseEntity<List<Student>> getAllStudents() {
+        return ResponseEntity.ok(studentService.getAllStudents());
     }
 
     @GetMapping("/high-grades")
-    public List<Student> getStudentsWithGradesAboveEight() {
-        return studentService.getStudentsWithGradesAboveEight();
+    public ResponseEntity<List<Student>> getStudentsWithGradesAboveEight() {
+        return ResponseEntity.ok(studentService.getStudentsWithGradesAboveEight());
     }
 
     @PutMapping("/{matricula}")
-    public Student updateStudent(
+    public ResponseEntity<Student> updateStudent(
             @PathVariable Long matricula,
             @Valid @RequestBody StudentCreateRequest request
     ) {
-        return studentService.updateStudent(matricula, request);
+        Student student = studentService.updateStudent(matricula, request);
+        return ResponseEntity.ok(student);
     }
 }
