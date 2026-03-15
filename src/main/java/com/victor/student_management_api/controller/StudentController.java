@@ -25,6 +25,14 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+    @GetMapping("/{matricula}")
+    public ResponseEntity<Student> getStudentByMatricula(@PathVariable Long matricula) {
+
+        Student student = studentService.getStudentByMatricula(matricula);
+
+        return ResponseEntity.ok(student);
+    }
+
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
@@ -42,5 +50,13 @@ public class StudentController {
     ) {
         Student student = studentService.updateStudent(matricula, request);
         return ResponseEntity.ok(student);
+    }
+
+    @DeleteMapping("/{matricula}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long matricula) {
+
+        studentService.deleteStudent(matricula);
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -45,6 +45,12 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
+    public Student getStudentByMatricula(Long matricula) {
+
+        return studentRepository.findById(matricula)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+    }
+
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
@@ -77,5 +83,13 @@ public class StudentService {
 
         return studentRepository.save(student);
 
+    }
+
+    public void deleteStudent(Long matricula) {
+
+        Student student = studentRepository.findById(matricula)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        studentRepository.delete(student);
     }
 }
