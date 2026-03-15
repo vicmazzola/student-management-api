@@ -20,6 +20,10 @@ public class StudentService {
 
     public Student createStudent(StudentCreateRequest request) {
 
+        if (studentRepository.existsById(request.matricula())) {
+            throw new RuntimeException("Student already exists");
+        }
+
         Student student = new Student();
         student.setMatricula(request.matricula());
         student.setName(request.name());
