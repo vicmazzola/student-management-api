@@ -192,7 +192,7 @@ Default credentials:
 username: admin  
 password: admin123
 
-⚠️ This configuration is for **testing purposes only**.  
+This configuration is for **testing purposes only**.  
 In a real production environment, credentials should be stored securely and **passwords should never be committed to the repository**.
 ---
 
