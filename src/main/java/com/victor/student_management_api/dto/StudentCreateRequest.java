@@ -1,5 +1,6 @@
 package com.victor.student_management_api.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -19,7 +20,7 @@ public record StudentCreateRequest(
         @NotNull
         LocalDate birthDate,
 
-        List<StudentSubjectRequest> subjects
+        List<@Valid StudentSubjectRequest> subjects
 ) {
 
 }
