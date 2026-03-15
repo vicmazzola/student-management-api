@@ -149,6 +149,18 @@ Example request body:
 
 ---
 
+## Delete Student
+
+Deletes a student and all associated subjects.
+
+**DELETE**
+
+Example:
+```
+/students/{matricula}
+```
+
+
 # Running the Project
 
 Clone the repository:
@@ -179,6 +191,9 @@ Default credentials:
 
 username: admin  
 password: admin123
+
+⚠️ This configuration is for **testing purposes only**.  
+In a real production environment, credentials should be stored securely and **passwords should never be committed to the repository**.
 ---
 
 # H2 Database Console
@@ -212,3 +227,10 @@ Database
 
 DTOs are used for request input and entities represent the database model.
 
+---
+
+# Example Data
+
+For testing purposes, you can use the example-data.sql in the H2 to have available data. 
+
+src/main/resources/example-data.sql
