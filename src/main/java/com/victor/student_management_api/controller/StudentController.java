@@ -3,6 +3,7 @@ package com.victor.student_management_api.controller;
 import com.victor.student_management_api.dto.StudentCreateRequest;
 import com.victor.student_management_api.model.Student;
 import com.victor.student_management_api.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student createStudent(@RequestBody StudentCreateRequest request) {
+    public Student createStudent(@Valid @RequestBody StudentCreateRequest request) {
         return studentService.createStudent(request);
     }
 
@@ -33,7 +34,10 @@ public class StudentController {
     }
 
     @PutMapping("/{matricula}")
-    public Student updateStudent(@PathVariable Long matricula, @RequestBody StudentCreateRequest request) {
+    public Student updateStudent(
+            @PathVariable Long matricula,
+            @Valid @RequestBody StudentCreateRequest request
+    ) {
         return studentService.updateStudent(matricula, request);
     }
 }
